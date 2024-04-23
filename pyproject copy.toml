@@ -1,11 +1,12 @@
 [build-system]
-requires = ["flit"]
-build-backend = "flit.buildapi"
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name =  "nwn-python-splunk-logger"
+version = "0.0.4"
 authors = [
-     {name = "Geoff Callaghan", email = "geoff.callaghan@nwnatural.com"},
+    {name = "Geoff Callaghan", email = "geoff.callaghan@nwnatural.com"},
 ]
 description = "Custom logger to send logs to Splunk"
 readme = "README.md"
@@ -21,9 +22,6 @@ classifiers = [
 ]
 requires-python = ">=3.8.1"
 dynamic = ["version"]
-dependencies = [
-  'splunk-sdk'
-]
 
 [project.optional-dependencies]
 spark = [
@@ -55,7 +53,7 @@ Source = "https://github.com/microsoft/python-package-template"
 Tracker = "https://github.com/microsoft/python-package-template/issues"
 
 [tool.flit.module]
-name = "splunk_logger"
+name = "nwn_python_splunk_logger"
 
 [tool.bandit]
 exclude_dirs = ["build","dist","tests","scripts"]
@@ -114,6 +112,7 @@ executionEnvironments = [
 ]
 
 [tool.pytest.ini_options]
+addopts = "--cov-report xml:coverage.xml --cov src --cov-fail-under 0 --cov-append -m 'not integration'"
 pythonpath = [
   "src"
 ]
